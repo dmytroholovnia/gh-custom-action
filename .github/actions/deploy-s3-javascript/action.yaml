@@ -1,5 +1,16 @@
 name: 'Deploy to AWS'
 description: 'Deploying to AWS'
+inputs:
+  bucket:
+    description: 'Bucket name'
+    required: true
+  bucket-region:
+    description: 'Region of the bucket'
+    required: false
+    default: 'eu-north-1'
+  dist-folder:
+    description: 'Path to deployable build'
+    required: true
 runs:
   using: node16
   main: 'main.js'
