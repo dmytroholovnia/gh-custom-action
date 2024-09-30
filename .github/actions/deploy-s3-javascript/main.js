@@ -12,7 +12,11 @@ function run() {
     const s3Uri = `s3://${bucketName}`;
     exec.exec(`aws s3 sync ${distFolder} ${s3Uri} --region ${bucketRegion}`);
 
-    core.notice('My test message')
+    //3. set output value
+    const url = `https://${bucketName}.s3-website.${bucketRegion}.amazonaws.com`
+    core.setOutput('website-url', url);
+
+//    core.notice('My test message') //logging
 }
 
 run();

@@ -11,6 +11,9 @@ inputs:
   dist-folder:
     description: 'Path to deployable build'
     required: true
+outputs:
+  website-url:
+    description: 'URL of deployed website'
 runs:
   using: node16
   main: 'main.js'
