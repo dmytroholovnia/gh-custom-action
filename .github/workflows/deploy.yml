@@ -1,4 +1,4 @@
-name: Deployment
+name: Deployment JS
 on:
   workflow_dispatch:
 #  push:
