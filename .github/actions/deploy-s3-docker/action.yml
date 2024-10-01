@@ -1,0 +1,19 @@
+name: 'Deploy to aws via Docker'
+description: 'Deploying to AWS via Docker'
+inputs:
+  bucket:
+    description: 'Bucket name'
+    required: true
+  bucket-region:
+    description: 'Region of the bucket'
+    required: false
+    default: 'eu-north-1'
+  dist-folder:
+    description: 'Path to deployable build'
+    required: true
+outputs:
+  website-url:
+    description: 'URL of deployed website'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

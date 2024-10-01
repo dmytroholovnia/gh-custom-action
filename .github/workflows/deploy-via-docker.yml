@@ -1,9 +1,8 @@
 name: Deployment
 on:
-  workflow_dispatch:
-#  push:
-#    branches:
-#      - main
+  push:
+    branches:
+      - main
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -65,14 +64,14 @@ jobs:
         run: ls
       - name: Deploy site
         id: deploy
-        uses: ./.github/actions/deploy-s3-javascript
+        uses: ./.github/actions/deploy-s3-docker
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_ID }}
         with:
-         bucket: gh-actions-practice-dmytro
-         bucket-region: eu-north-1
-         dist-folder: ./dist
+          bucket: gh-actions-practice-dmytro
+          bucket-region: eu-north-1
+          dist-folder: ./dist
       - name: Site URL
         run: |
           echo 'Site URL: ${{ steps.deploy.outputs.website-url }}'
